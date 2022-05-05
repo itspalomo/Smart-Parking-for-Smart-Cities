@@ -1,12 +1,13 @@
 import RPi.GPIO as GPIO
 import time
+import TCPClient
 
 TRIG = 21
 ECHO = 20
 GPIO.setmode(GPIO.BCM)
 
 while True:
-    file = open("/var/www/html/data.txt","w")
+    file = open("/home/pi/Smart-Parking-for-Smart-Cities/data.txt","w")
     print("distance measurement in progress")
     GPIO.setup(TRIG, GPIO.OUT)
     GPIO.setup(ECHO, GPIO.IN)
@@ -27,7 +28,8 @@ while True:
     
     file.write(str(distance))
     file.close()
+    TCPClient.tcpsend("data.txt")
+
     
-    
-    time.sleep(.5)
+    time.sleep(10)
     
