@@ -11,7 +11,7 @@ while True:
     print("distance measurement in progress")
     GPIO.setup(TRIG, GPIO.OUT)
     GPIO.setup(ECHO, GPIO.IN)
-    GPIO.output(TRIG,False)
+    GPIO.output(TRIG, False)
     print("waiting for sensor to settle")
     time.sleep(0.2)
     GPIO.output(TRIG, True)
@@ -23,8 +23,8 @@ while True:
         pulse_end = time.time()
     pulse_duration = pulse_end-pulse_start
     distance = pulse_duration*17150
-    distance = round(distance,2)
-    print("distance:",distance, " cm")
+    distance = round(distance, 2)
+    print("distance:", distance, " cm")
     
     file.write(str(distance))
     file.close()
